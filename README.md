@@ -21,50 +21,72 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Quiz App
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The application is a Quiz interface - a UI that shows a set of questions and lets the user select an answer for each one.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The Quiz features three different types of questions. Use the included mockups as references for styling.
 
-### `yarn eject`
+**Multiple**   
+A multiple-choice question (predefined answer options)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![](./mockups/multiple.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Boolean**   
+A "true or false" only answer question
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![](./mockups/boolean.png)
 
-## Learn More
+**Text**   
+An open-ended text question
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![](./mockups/text.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Requirements
 
-### Code Splitting
+1. The UI should fetch the questions data from an API (provided in this repository). More details in [API instructions](#api-instructions)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. The application should display one question per time, randomly selected from the set of questions.  
+   
+3. When the user finishes the Quiz, the UI should display a summary page with the results, including:
 
-### Analyzing the Bundle Size
+- Number of correct answers
+- Number of incorrect answers
+- Total number of questions answered
+- The final score (%)
+- A button to restart the Quiz with a different questions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+A reference mockup for the summary page is depicted below:
 
-### Making a Progressive Web App
+![](./mockups/summary.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Setup
 
-### Advanced Configuration
+This repo provides a React application bootstrap. To get setup, run these commands:
+ 
+- Install dependencies:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```sh
+npm install
+```
 
-### Deployment
+- Run it locally
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```sh
+npm start
+```
 
-### `yarn build` fails to minify
+The command above will:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Start an HTTP server for the API (localhost:4000);
+- Start an HTTP server (powered by react-scripts) for the front-end (localhost:3000);
+
+### API instructions
+
+This repository provides a basic API (running under port 4000) that returns the required data for the application.
+The API will be available after running the `npm start` command.  
+
+#### GET Questions List
+
+`http://localhost:4000/api/questions`
