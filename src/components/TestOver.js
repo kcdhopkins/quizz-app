@@ -14,6 +14,7 @@ const TestOver = ({answeredQuestions, restart, testOver, setAnsweredQuestions})=
             setIncorrect(inco.length)
             setCalculate(false)
         }
+        // eslint-disable-next-line
     }, [])
 
     const handleClick = ()=>{

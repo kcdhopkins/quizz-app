@@ -1,4 +1,4 @@
-import { Button, FormControl, FormControlLabel, Grid, Radio, RadioGroup, Typography } from '@material-ui/core'
+import { Button, FormControlLabel, Grid, Radio, RadioGroup, Typography } from '@material-ui/core'
 import arrayShuffle from 'array-shuffle'
 import { Field, Form, Formik } from 'formik'
 import React, { useState, useCallback, useEffect } from 'react'
@@ -15,6 +15,7 @@ const MultipleChoice = ({currentQuestion, handleQuestions}) => {
             setAnswers(arrayShuffle([...incorrect_answers, correct_answer]))
             setShuffle(false)
         }
+    // eslint-disable-next-line
     }, [answers])
    
 

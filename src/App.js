@@ -1,4 +1,4 @@
-import { Box, Button, CircularProgress, Grid, makeStyles } from '@material-ui/core';
+import { Box, CircularProgress, makeStyles } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import MultipleChoice from './components/MultipleChoice';
 import Text from './components/Text';
@@ -32,7 +32,7 @@ export const App = () => {
       if(restart){
         setRestart(false)
       }
-    })
+    }, [restart])
 
     useEffect(()=>{
        getQuestions(setQuestions, setLoading);
@@ -52,7 +52,7 @@ export const App = () => {
         setUnansweredQuestions([...unansweredQuestions, question])
        }
 
-      const [first, ...rest] = questions
+      const [, ...rest] = questions
      
       if(rest.length){
         setQuestions(rest)
@@ -65,7 +65,7 @@ export const App = () => {
     return (
       
         <Box display="flex" justifyContent="center" alignItems="center" height="100vh" >
-          {loading && <CircularProgress /> }
+          {loading && <CircularProgress />}
           {!loading && <Box component="div" className = {classes.boxContainer}>
               {question?.type === 'text' && <Text currentQuestion={question} handleQuestions={handleQuestions}/>}
               {(question?.type === 'multiple' || question?.type === 'boolean') && <MultipleChoice currentQuestion={question} handleQuestions={handleQuestions}/>}
